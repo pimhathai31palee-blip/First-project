@@ -4,7 +4,7 @@
     <q-input
       filled
       v-model="name"
-      label="Your name *"
+      label="Your name(ชื่อ) *"
       hint="Name and surname"
       lazy-rules
       :rules="[val => (val && val.length > 0) || 'Please type something']"
@@ -14,7 +14,7 @@
       filled
       type="number"
       v-model.number="age"
-      label="Your age *"
+      label="Your age(อายุ) *"
       lazy-rules
       :rules="[
         val => (val !== null && val !== '') || 'Please type your age',
@@ -22,7 +22,7 @@
       ]"
     />
 
-    <q-toggle v-model="accept" label="I accept the license and terms" />
+    <q-toggle v-model="accept" label="I accept the license and terms (ฉันยอมรับเงื่อนไข)" />
 
     <div>
      <q-btn label="Submit" type="submit" color="primary" />
@@ -39,36 +39,36 @@
 </template>
 
 <script setup>
-import { useQuasar } from 'quasar'
-import { ref } from 'vue'
+ import { useQuasar } from 'quasar'
+ import { ref } from 'vue'
 
-const $q = useQuasar()
+ const $q = useQuasar()
 
-const name = ref(null)
-const age = ref(null)
-const accept = ref(false)
+ const name = ref(null)
+ const age = ref(null)
+ const accept = ref(false)
 
-function onSubmit() {
-  if (accept.value !== true) {
-    $q.notify({
-      color: 'red-5',
-      textColor: 'white',
-      icon: 'warning',
-      message: 'You need to accept the license and terms first'
-    })
-  } else {
-    $q.notify({
-      color: 'green-4',
-      textColor: 'white',
-      icon: 'cloud_done',
-      message: 'Submitted'
-    })
-  }
-}
+ function onSubmit() {
+   if (accept.value !== true) {
+     $q.notify({
+       color: 'red-5',
+       textColor: 'white',
+       icon: 'warning',
+       message: 'You need to accept the license and terms first'
+     })
+   } else {
+     $q.notify({
+       color: 'green-4',
+       textColor: 'white',
+       icon: 'cloud_done',
+       message: 'Submitted'
+     })
+   }
+ }
 
-function onReset() {
-  name.value = null
-  age.value = null
-  accept.value = false
-}
+ function onReset() {
+   name.value = null
+   age.value = null
+   accept.value = false
+ }
 </script>
